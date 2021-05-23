@@ -1,7 +1,11 @@
 <template>
 <div id="app">
-  <h1>KVA</h1>
-    <Users v-bind:users=this.users v-on:reload="getUsers()"></Users>
+  <div class="navbar" role="navigation" aria-label="main navigation" style="border-bottom: 1px solid lightgrey;">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://www.google.com/search?q=konner+atkin">KVA</a>
+      </div>
+    </div>
+    <Users></Users>
 </div>
 </template>
 
@@ -24,7 +28,6 @@ export default {
       getUsers().then(response => {
         this.users = response.results
       });
-      console.log("reloaded");
     }
   },
   mounted () {
