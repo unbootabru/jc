@@ -2,17 +2,18 @@
   <div>
     <div class="section">
       <div id="mainModal" class="modal">
-        <div class="modal-background" v-on:click="closeModal"></div>
+        <div class="modal-background" v-on:click="toggleModal()"></div>
         <div id="editUserPopup" class="modal-content nodisp" style="width: 800px;">
           <UserEdit v-if="selected != null" :user=selected :isNew="selected.id == null"
                     v-on:update-users="reloadUsers($event)" v-on:update-cancelled="toggleModal()"></UserEdit>
         </div>
         <div id="deleteConfirmation" class="modal-content nodisp">
           <div class="box">
-            <p>Are you sure you want to delete {{userToDelete ? userToDelete.firstname + '?' : 'this user?'}}</p>
-            <div>
-              <button class="" v-on:click="cancelDeletePopup()">No</button>
-              <button v-on:click="acceptDeletePopup()">Yes</button>
+            <font-awesome-icon icon="exclamation" class="is-inline-block" />
+            <span style="padding-left: 8px;">Are you sure you want to delete {{userToDelete ? userToDelete.firstname + '?' : 'this user?'}}</span>
+            <div style="margin-top: 16px;">
+              <button class="button" v-on:click="cancelDeletePopup()">No</button>
+              <button class="button" v-on:click="acceptDeletePopup()">Yes</button>
             </div>
           </div>
         </div>
@@ -72,21 +73,17 @@ export default {
       });
     },
     createUser: function() {
+      this.selected = {};
       this.toggleModal(1);
       document.getElementById("editUserPopup").classList.remove("nodisp");
-      this.selected = {};
     },
     launchEditUser: function(user) {
       this.selected = user;
       this.toggleModal(1);
       document.getElementById("editUserPopup").classList.remove("nodisp");
     },
-    closeModal: function() {
-      this.toggleModal();
-      this.selected = null;
-    },
-    toggleModal: function(isOn) {
-       if(isOn) {
+    toggleModal: function(showPopup) {
+       if(showPopup) {
         document.getElementById("mainModal").classList.add("is-active");
       }
       else {
@@ -152,5 +149,8 @@ export default {
 <style scoped>
 .nodisp {
   display: none;
+}
+tr:hover {
+  cursor:pointer
 }
 </style>
