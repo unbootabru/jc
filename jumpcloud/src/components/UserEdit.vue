@@ -7,6 +7,7 @@
      <div class="section">
         <div class="container">
           <table style="cellspacing: 10px;">
+            <!-- Basic User Fields -->
             <tr>
               <td class="cell">
                 <label class="label">First Name</label>
@@ -43,6 +44,8 @@
             </tr>
           </table>  
         </div>
+
+        <!-- Accept/Cancel Buttons -->
         <div  style="margin-top: 32px;" >
           <div class="is-pulled-right">
             <input type="submit" class="button is-cancel" value="Cancel" v-on:click="cancel" style="margin-right: 16px;"/>
