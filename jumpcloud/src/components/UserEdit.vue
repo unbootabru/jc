@@ -85,6 +85,9 @@ export default {
       if (this.editUser.lastname) {
         full += this.editUser.lastname;
       }
+      if (!full || full.length == 0) {
+        full = this.editUser.username;
+      }
       return full;
     },
     hasValidEmail: function() {
