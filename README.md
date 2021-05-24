@@ -1,6 +1,7 @@
 # Dependencies
 1. Font Awesome 5: https://www.npmjs.com/package/@fortawesome/vue-fontawesome
 2. Vue 3 CLI: https://v3.vuejs.org/guide/installation.html#download-and-self-host
+3. Bulma: https://bulma.io/bulma-start/
 
 
 # About
@@ -16,3 +17,8 @@ Basic error message shown when request is bad (like when trying to add users whe
 4. I'm not sure I'm manipulating the edit user correctly.  I want them to be a copy of the passed in user, but I don't think I would want to maintain the list of editable properties so explicitly
 5. Adding additional cards to update more details -- I would do this pretty similarly to the Jumpcloud UI.
 6. Not have a modal for editing (or at least so in your face about it)
+
+
+
+
+Thank you for the opportunity to do this!  It was a lot of fun to do this kind of assignment and learn/interact with new tools.
