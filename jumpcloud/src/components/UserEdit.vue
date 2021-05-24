@@ -29,8 +29,7 @@
                   <font-awesome-icon icon="asterisk" size="xs" font-size="0.3em" style="margin-bottom: 5px;"/>
                 </div>
                 <input class="input" style="width: 200px;" type="text" v-model="editUser.username"/>
-                <div class="errorDiv"
-                v-if="!hasValidUsername && showUsernameError">Username is required</div>
+                <div class="errorDiv" v-if="!hasValidUsername && showUsernameError">Username is required</div>
               </td>
               <td class="cell">
                 <label class="label is-inline-block">Email</label>

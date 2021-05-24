@@ -16,7 +16,7 @@
             <span style="padding-left: 8px;">Are you sure you want to delete {{userToDelete ? userToDelete.firstname + '?' : 'this user?'}}</span>
             <div style="margin-top: 16px; height: 40px;"  >
               <div class="is-pulled-right">
-                <button class="button" v-on:click="cancelDeletePopup()">No</button>
+                <button class="button" style="margin-right: 16px;" v-on:click="cancelDeletePopup()">No</button>
                 <button class="button" v-on:click="acceptDeletePopup()">Yes</button>
               </div>
             </div>
