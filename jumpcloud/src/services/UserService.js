@@ -1,4 +1,3 @@
-
 /**
  * GETs list of users from database
  * @returns JSON list of users

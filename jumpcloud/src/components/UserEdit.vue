@@ -102,14 +102,18 @@ export default {
     }
   },
   methods: {
+    /**
+     * Saves a user
+     */
     saveUser: function() {
       this.saveErrorMessage = "";
       if(!this.hasValidEmail) {
         this.showEmailError = true;
-        return;
       }
       if (!this.hasValidUsername) {
         this.showUsernameError = true;
+      }
+      if (this.showEmailError || this.showUsernameError) {
         return;
       }
       if(this.isNew) {
@@ -126,10 +130,18 @@ export default {
       }
       this.cleanUp();
     },
+    
+    /**
+     * Cancel click handler
+     */
     cancel: function() {
       this.$emit("update-cancelled");
       this.cleanUp();
     },
+
+    /**
+     * Clean up when popup is closing
+     */
     cleanUp: function() {
       this.showEmailError = false;
       this.showUsernameError = false;
