@@ -14,9 +14,11 @@
           <div class="box">
             <font-awesome-icon icon="exclamation" class="is-inline-block" />
             <span style="padding-left: 8px;">Are you sure you want to delete {{userToDelete ? userToDelete.firstname + '?' : 'this user?'}}</span>
-            <div style="margin-top: 16px;">
-              <button class="button" v-on:click="cancelDeletePopup()">No</button>
-              <button class="button" v-on:click="acceptDeletePopup()">Yes</button>
+            <div style="margin-top: 16px; height: 40px;"  >
+              <div class="is-pulled-right">
+                <button class="button" v-on:click="cancelDeletePopup()">No</button>
+                <button class="button" v-on:click="acceptDeletePopup()">Yes</button>
+              </div>
             </div>
           </div>
         </div>
@@ -29,6 +31,7 @@
       <div class="card">
         <table class="table is-hoverable" style="width: 100%;">
           <thead>
+            <th></th>
             <th>Last Name</th>
             <th>First Name</th>
             <th>Username</th>
@@ -39,11 +42,11 @@
                 v-bind:todo="user"
                 v-bind:key="user.id"
                 v-on:click="launchEditUser(user)">
+                <td style="width: 50px;"><button class="button buttonCell" title="Delete user" v-on:click.stop="onDeleteClick(user)"><font-awesome-icon icon="trash"></font-awesome-icon></button></td>
                 <td>{{user.lastname}}</td>
                 <td>{{user.firstname}}</td>
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
-                <td><button class="button" title="Delete user" v-on:click.stop="onDeleteClick(user)"><font-awesome-icon icon="trash"></font-awesome-icon></button></td>
             </tr>
 
           </tbody>
@@ -194,7 +197,20 @@ export default {
 .nodisp {
   display: none;
 }
+tr {
+  height: 56px;
+}
 tr:hover {
   cursor:pointer
 }
+
+
+.buttonCell {
+  visibility: hidden;
+}
+
+tr:hover .buttonCell {
+  visibility: visible;
+}
+
 </style>
