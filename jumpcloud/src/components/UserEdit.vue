@@ -47,7 +47,8 @@
 
         <!-- Accept/Cancel Buttons -->
         <div  style="margin-top: 32px;" >
-          <div class="is-pulled-right">
+          <div class="is-flex is-pulled-right is-align-items-center">
+            <span v-if="showResponseError" style="margin-right: 8px;">Something went wrong</span>
             <input type="submit" class="button is-cancel" value="Cancel" v-on:click="cancel" style="margin-right: 16px;"/>
             <input type="submit" class="button is-success" value="Save" v-on:click="saveUser" />
           </div>
@@ -72,7 +73,8 @@ export default {
         username: this.user.username
       },
       showEmailError: false,
-      showUsernameError: false
+      showUsernameError: false,
+      showResponseError: false
     }
   },
   computed: {
@@ -109,6 +111,32 @@ export default {
      * Saves a user
      */
     saveUser: function() {
+      if (!this.validateUser()) {
+        return;
+      }
+      this.showResponseError = false;
+      if(this.isNew) {
+        delete this.editUser['id'];
+        createUser(this.editUser).then((response) => {
+          this.$emit("update-users", response);
+        })
+        .catch(() => {
+          this.showResponseError = true;
+        });
+      }
+      else {
+        updateUser(this.editUser)
+          .then((response) => {
+            this.$emit("update-users", response);
+          })
+          .catch(() => {
+            this.showResponseError = true;
+          });
+      }
+      this.cleanUp();
+    },
+
+    validateUser: function() {
       this.saveErrorMessage = "";
       if(!this.hasValidEmail) {
         this.showEmailError = true;
@@ -117,21 +145,9 @@ export default {
         this.showUsernameError = true;
       }
       if (this.showEmailError || this.showUsernameError) {
-        return;
+        return false;
       }
-      if(this.isNew) {
-        delete this.editUser['id'];
-        createUser(this.editUser).then((response) => {
-          this.$emit("update-users", response);
-        });
-      }
-      else {
-        updateUser(this.editUser)
-          .then((response) => {
-            this.$emit("update-users", response);
-          });
-      }
-      this.cleanUp();
+      return true;
     },
     
     /**

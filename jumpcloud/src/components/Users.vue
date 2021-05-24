@@ -43,10 +43,10 @@
                 v-bind:key="user.id"
                 v-on:click="launchEditUser(user)">
                 <td style="width: 50px;"><button class="button buttonCell" title="Delete user" v-on:click.stop="onDeleteClick(user)"><font-awesome-icon icon="trash"></font-awesome-icon></button></td>
-                <td>{{user.lastname}}</td>
-                <td>{{user.firstname}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
+                <td class="tableCell">{{user.lastname}}</td>
+                <td class="tableCell">{{user.firstname}}</td>
+                <td class="tableCell">{{user.username}}</td>
+                <td class="tableCell">{{user.email}}</td>
             </tr>
 
           </tbody>
@@ -202,6 +202,10 @@ tr {
 }
 tr:hover {
   cursor:pointer
+}
+
+.tableCell {
+  vertical-align: middle;
 }
 
 

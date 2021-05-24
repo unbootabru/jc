@@ -23,8 +23,6 @@ export async function getUser(userID) {
  * @returns JSDON user data
  */
 export async function updateUser(data) {
-    console.log(data.id);
-    console.log("asdf");
     const response = await fetch('/api/systemusers/' + data.id, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -39,7 +37,6 @@ export async function updateUser(data) {
  * @returns JSON user data
  */
 export async function createUser(data) {
-    console.log(data);
     const response = await fetch('/api/systemusers', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -54,7 +51,6 @@ export async function createUser(data) {
  * @returns JSDON user data
  */
 export async function deleteUser(userID) {
-    console.log(userID);
     const response = await fetch('/api/systemusers/' + userID, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
